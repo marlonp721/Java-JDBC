@@ -1,0 +1,14 @@
+Desarrollo de Aplicaciones de Escritorio
+(Java Cliente-Servidor)
+(JAVA JDBC)
+Docente: Gustavo Coronel
+Blog: www.desarrollasoftware.com
+--------------------------------------------
+Horario: 8am a 1pm
+Sesiones: 5
+CRONOGRAMA
+29-01=> 9-13=>4h
+01-02=> 8-13=>5h
+03-02=> 8-13=>5h
+05-02=> 8-13=>5h
+08-02=> 8-13=>5h
