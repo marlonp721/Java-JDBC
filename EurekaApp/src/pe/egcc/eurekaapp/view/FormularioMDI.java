@@ -5,6 +5,10 @@
  */
 package pe.egcc.eurekaapp.view;
 
+import javax.swing.JInternalFrame;
+import pe.egcc.eurekaapp.domain.EmpleadoBean;
+import pe.egcc.eurekaapp.util.Memoria;
+
 /**
  *
  * @author Alumno
@@ -16,9 +20,19 @@ public class FormularioMDI extends javax.swing.JFrame {
      */
     public FormularioMDI() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(this);
+        //establecerTitulo();
     }
 
+    private void establecerTitulo(){
+        EmpleadoBean bean = (EmpleadoBean) Memoria.get("usuario");
+        String titulo = "EUREKA APP ";
+        titulo += "[Usuario: " + bean.getUsuario() + "]";
+        this.setTitle(titulo);
+
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,88 +44,71 @@ public class FormularioMDI extends javax.swing.JFrame {
 
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        contentMenuItem = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
+        menuArchivo = new javax.swing.JMenu();
+        menuArchivoSalir = new javax.swing.JMenuItem();
+        menuProcesos = new javax.swing.JMenu();
+        menuProcesosCrearCuenta = new javax.swing.JMenuItem();
+        menuProcesosDeposito = new javax.swing.JMenuItem();
+        menuProcesosRetiro = new javax.swing.JMenuItem();
+        menuProcesosTransferencia = new javax.swing.JMenuItem();
+        menuProcesosCerrarCuenta = new javax.swing.JMenuItem();
+        menuTblas = new javax.swing.JMenu();
+        menuConsultas = new javax.swing.JMenu();
+        menuReportes = new javax.swing.JMenu();
+        menuUtil = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eureka");
 
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("File");
+        menuArchivo.setMnemonic('f');
+        menuArchivo.setText("Archivo");
 
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
-        fileMenu.add(openMenuItem);
-
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
-
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
-
-        exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        menuArchivoSalir.setMnemonic('x');
+        menuArchivoSalir.setText("Salir");
+        menuArchivoSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
+                menuArchivoSalirActionPerformed(evt);
             }
         });
-        fileMenu.add(exitMenuItem);
+        menuArchivo.add(menuArchivoSalir);
 
-        menuBar.add(fileMenu);
+        menuBar.add(menuArchivo);
 
-        editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
+        menuProcesos.setText("Procesos");
 
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Cut");
-        cutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        menuProcesosCrearCuenta.setText("Crear cuenta");
+        menuProcesos.add(menuProcesosCrearCuenta);
+
+        menuProcesosDeposito.setText("Registrar depósito");
+        menuProcesosDeposito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cutMenuItemActionPerformed(evt);
+                menuProcesosDepositoActionPerformed(evt);
             }
         });
-        editMenu.add(cutMenuItem);
+        menuProcesos.add(menuProcesosDeposito);
 
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Copy");
-        editMenu.add(copyMenuItem);
+        menuProcesosRetiro.setText("Registrar retiro");
+        menuProcesos.add(menuProcesosRetiro);
 
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
+        menuProcesosTransferencia.setText("Registrar transferencia");
+        menuProcesos.add(menuProcesosTransferencia);
 
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
+        menuProcesosCerrarCuenta.setText("Cerrar cuenta");
+        menuProcesos.add(menuProcesosCerrarCuenta);
 
-        menuBar.add(editMenu);
+        menuBar.add(menuProcesos);
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
+        menuTblas.setText("Tablas");
+        menuBar.add(menuTblas);
 
-        contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Contents");
-        helpMenu.add(contentMenuItem);
+        menuConsultas.setText("Consultas");
+        menuBar.add(menuConsultas);
 
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
-        helpMenu.add(aboutMenuItem);
+        menuReportes.setText("Reportes");
+        menuBar.add(menuReportes);
 
-        menuBar.add(helpMenu);
+        menuUtil.setText("Util");
+        menuBar.add(menuUtil);
 
         setJMenuBar(menuBar);
 
@@ -129,14 +126,37 @@ public class FormularioMDI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+    private void menuArchivoSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuArchivoSalirActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
+    }//GEN-LAST:event_menuArchivoSalirActionPerformed
 
-    private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed
+    private void menuProcesosDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProcesosDepositoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cutMenuItemActionPerformed
+        cargarFormulario(DepositoView.class);
+    }//GEN-LAST:event_menuProcesosDepositoActionPerformed
 
+    private void cargarFormulario(Class<?> aClass) {
+    try {
+      // Variable
+      JInternalFrame view = null;
+      // Verificar si ya existe
+      for (JInternalFrame bean : desktopPane.getAllFrames()) {
+        if (aClass.isInstance(bean)) {
+          view = bean;
+          break;
+        }
+      }
+      // Si NO lo encuentra lo creamos
+      if (view == null) {
+        view = (JInternalFrame) Class.forName(aClass.getName()).newInstance();
+        desktopPane.add(view);
+      }
+      // Se debe activar el formulario
+      view.setVisible(true);
+      view.setSelected(true);
+    } catch (Exception e) {
+    }
+    }
     /**
      * @param args the command line arguments
      */
@@ -173,21 +193,20 @@ public class FormularioMDI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
-    private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
-    private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenu menuArchivo;
+    private javax.swing.JMenuItem menuArchivoSalir;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem pasteMenuItem;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
+    private javax.swing.JMenu menuConsultas;
+    private javax.swing.JMenu menuProcesos;
+    private javax.swing.JMenuItem menuProcesosCerrarCuenta;
+    private javax.swing.JMenuItem menuProcesosCrearCuenta;
+    private javax.swing.JMenuItem menuProcesosDeposito;
+    private javax.swing.JMenuItem menuProcesosRetiro;
+    private javax.swing.JMenuItem menuProcesosTransferencia;
+    private javax.swing.JMenu menuReportes;
+    private javax.swing.JMenu menuTblas;
+    private javax.swing.JMenu menuUtil;
     // End of variables declaration//GEN-END:variables
 
 }
