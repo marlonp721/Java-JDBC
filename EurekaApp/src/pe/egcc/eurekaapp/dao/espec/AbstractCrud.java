@@ -8,7 +8,7 @@ package pe.egcc.eurekaapp.dao.espec;
 import java.util.List;
 
 /**
- *
+ *Definicion generica del crud
  * @author Alumno
  */
 public interface AbstractCrud<T>{

@@ -1,12 +1,14 @@
 
 package pe.egcc.eurekaapp.controller;
 
+import pe.egcc.eurekaapp.service.LogonService;
+
 public class LogonController {
 
     public void validar(String usuario, String clave) {
-        if (!usuario.equals("gustavo")) {
-            throw new RuntimeException("Datos incorrectos. ");
-        }
+        LogonService logonService;
+        logonService = new LogonService();
+        logonService.validar(usuario, clave);
     }
     
 }

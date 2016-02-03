@@ -1,8 +1,8 @@
 
 package pe.egcc.eurekaapp.dao.espec;
 
-import pe.egcc.eurekaapp.domain.ClienteBean;
+import pe.egcc.eurekaapp.domain.SucursalBean;
 
-public interface SucursalDaoCrud extends AbstractCrud<ClienteBean>{
+public interface SucursalDaoCrud extends AbstractCrud<SucursalBean>{
     
 }
