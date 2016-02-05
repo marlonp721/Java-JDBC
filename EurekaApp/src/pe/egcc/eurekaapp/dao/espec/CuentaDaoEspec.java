@@ -1,21 +1,18 @@
-
 package pe.egcc.eurekaapp.dao.espec;
 
 /**
  *
- * @author Alumno
+ * @author Gustavo Coronel
  */
 public interface CuentaDaoEspec {
-    //definimos los servicios
-    /*
-    
-    Este meotodo implemente el servicio para registrar un deposito
-    
-    cuenta Código de la cuenta
-    importe Importe a depositar
-    codEmp Codigo del empleado que ejecuta la operacion
-    */
-    
-    void registrarDeposito(String cuenta,double importe,String codEmp);
-    
+  
+  /**
+   * Este método implementa el servicio para registrar un depósito.
+   * 
+   * @param cuenta Código de la cuenta.
+   * @param importe Importe a depósitar
+   * @param codEmp Codigo del empleado que ejecuta la 
+   */
+  void registrarDeposito(String cuenta, double importe,  String codEmp);
+  
 }

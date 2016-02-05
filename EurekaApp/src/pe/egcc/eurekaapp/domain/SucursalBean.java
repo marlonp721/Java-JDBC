@@ -7,8 +7,8 @@ package pe.egcc.eurekaapp.domain;
 
 /**
  *
- * @author Alumno
+ * @author GustavoCoronel
  */
 public class SucursalBean {
-    
+  
 }

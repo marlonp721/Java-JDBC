@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pe.egcc.eurekaapp.dao.impl;
 
 import java.sql.Connection;
@@ -14,14 +9,14 @@ import pe.egcc.eurekaapp.db.AccesoDB;
 
 /**
  *
- * @author Alumno
+ * @author GustavoCoronel
  */
-public class CuentaDaoImpl implements CuentaDaoEspec{
+public class CuentaDaoImpl implements CuentaDaoEspec {
 
-    @Override
-    public void registrarDeposito(String cuenta, double importe, String codEmp) {
-        Connection cn= null;
-        try {
+  @Override
+  public void registrarDeposito(String cuenta, double importe, String codEmp) {
+    Connection cn = null;
+    try {
       // Obtener la conexión
       cn = AccesoDB.getConnection();
       // Habilitar la transacción
@@ -29,7 +24,8 @@ public class CuentaDaoImpl implements CuentaDaoEspec{
       // Paso 1: Leer datos de la cuenta
       String sql = "select dec_cuensaldo, int_cuencontmov "
               + "from cuenta "
-              + "where chr_cuencodigo = ? ";
+              + "where chr_cuencodigo = ? "
+              + "for update ";
       PreparedStatement pstm = cn.prepareStatement(sql);
       pstm.setString(1, cuenta);
       ResultSet rs = pstm.executeQuery();
@@ -46,8 +42,7 @@ public class CuentaDaoImpl implements CuentaDaoEspec{
       sql = "update cuenta "
               + "set dec_cuensaldo = ?, "
               + "int_cuencontmov = ? "
-              + "where chr_cuencodigo = ? "
-              + "for update";
+              + "where chr_cuencodigo = ? ";
       pstm = cn.prepareStatement(sql);
       pstm.setDouble(1, saldo);
       pstm.setInt(2, cont);
@@ -84,6 +79,6 @@ public class CuentaDaoImpl implements CuentaDaoEspec{
       } catch (Exception e) {
       }
     }
-    }
-    
+  }
+
 }

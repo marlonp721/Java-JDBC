@@ -46,7 +46,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuProcesosTransferencia">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Registrar transferencia"/>
+                <Property name="text" type="java.lang.String" value="Registrar transferncia"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuProcesosCerrarCuenta">
@@ -81,7 +81,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Eureka"/>
+    <Property name="title" type="java.lang.String" value="EUREKA"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="menuBar"/>
